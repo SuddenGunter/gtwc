@@ -6,19 +6,19 @@ resource "digitalocean_firewall" "only_home_allowed" {
   inbound_rule {
     protocol         = "tcp"
     port_range       = "22"
-    source_addresses = ["${var.allowed_ip}"]
+    source_addresses = ["${var.allowed_ips}"]
   }
 
   inbound_rule {
     protocol         = "tcp"
     port_range       = "all"
-    source_addresses = ["${var.allowed_ip}"]
+    source_addresses = ["${var.allowed_ips}"]
   }
 
   inbound_rule {
     protocol         = "udp"
     port_range       = "all"
-    source_addresses = ["${var.allowed_ip}"]
+    source_addresses = ["${var.allowed_ips}"]
   }
 
   outbound_rule {

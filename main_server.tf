@@ -16,12 +16,6 @@ resource "digitalocean_droplet" "mainserver" {
     host        = "${self.ipv4_address}"
   }
 
-  #upload drone ci script
- # provisioner "file" {
- #   source      = "scripts/drone.sh"
- #   destination = "/tmp/drone.sh"
- # }
-
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
@@ -58,21 +52,6 @@ resource "digitalocean_droplet" "mainserver" {
       #allow user to use docker without root
       "sudo groupadd docker",
       "sudo usermod -aG docker ${var.system_username}",
-
-      #install drone CI
-      #prepare config in env
-     # "export GITHUB_CLIENT_ID=${var.drone_githab_client_id}",
-     # "export GITHUB_CLIENT_SECRET=${var.drone_githab_client_secret}",
-     # "export DRONE_DOMAIN=${var.drone_subdomain}.${var.domain_name}",
-     # "export DRONE_ADMIN_USERNAME=${var.drone_admin_username}",
-     # "export DRONE_ADMIN_PASSWORD=${var.drone_admin_token}",
-      #deploy drone
-      #"bash /tmp/drone.sh",
-      #clear after drone deploy
-      #"rm /tmp/drone.sh",
-      #"unset GITHUB_CLIENT_ID",
-      #"unset GITHUB_CLIENT_SECRET",
-      #"unset DRONE_ADMIN_PASSWORD"
     ]
   }
 }
