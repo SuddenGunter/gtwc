@@ -1,0 +1,8 @@
+- hosts: mainserver
+  tasks:
+    - apt: name=cowsay
+      become: yes
+      become_method: sudo
+    - command: cowsay hello, world!
+      register: hello
+    - debug: msg="{{ hello.stdout_lines }}"

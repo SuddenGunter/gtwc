@@ -1,0 +1,10 @@
+- name: Install dependencies that allows run docker files using ansible
+  hosts: mainserver
+  tasks:
+    - apt: name=python3-pip
+      become: yes
+      become_method: sudo        
+    - pip: 
+        name: docker
+    - pip: 
+        name: docker-compose    

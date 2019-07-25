@@ -1,0 +1,18 @@
+- name: Install NSQ
+  hosts: mainserver
+  tasks:
+    - file: path=~/nsq state=directory
+    - copy:
+        src: docker-compose.nsq.yml
+        dest: ~/nsq/docker-compose.yml
+        mode: 0644
+    - docker_compose:
+        project_src: ~/nsq/
+        state: absent
+      register: output
+    - docker_compose:
+        project_src: ~/nsq/
+        state: present
+      register: output
+    - debug:
+        var: output
