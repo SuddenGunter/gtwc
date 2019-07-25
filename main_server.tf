@@ -45,7 +45,7 @@ resource "digitalocean_droplet" "mainserver" {
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -",
       "sudo add-apt-repository  -y 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'",
       "sudo apt update -q",
-      "sudo apt-get install -yq docker-ce docker-ce-cli containerd.io docker-compose",
+      "sudo apt-get install -yq docker-ce docker-ce-cli containerd.io",
       "docker login --username ${var.docker_username} --password ${var.docker_password}",
       "sudo systemctl enable docker",
 
