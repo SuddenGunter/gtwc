@@ -9,8 +9,10 @@
     - docker_compose:
         project_src: ~/nsq/
         state: absent
+      register: output
     - docker_compose:
         project_src: ~/nsq/
         state: present
       register: output
-    - debug: msg="{{ output.stdout_lines }}"
+    - debug:
+        var: output
