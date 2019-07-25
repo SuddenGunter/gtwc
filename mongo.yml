@@ -13,6 +13,9 @@
     - docker_compose:
         project_src: ~/mongo/
         state: present
+      environment:
+        mongo_username: "{{mongo_username}}"
+        mongo_password: "{{mongo_password}}"
       register: output
     - debug:
         var: output
