@@ -8,6 +8,9 @@
         mode: 0644
     - docker_compose:
         project_src: ~/nsq/
+        state: absent
+    - docker_compose:
+        project_src: ~/nsq/
+        state: present
       register: output
-    - debug:
-        var: output
+    - debug: msg="{{ output.stdout_lines }}"
