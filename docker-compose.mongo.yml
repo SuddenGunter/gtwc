@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  nsqlookupd:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME={{mongo_username}}
+      - MONGO_INITDB_ROOT_PASSWORD={{mongo_password}}
+    restart: always
+
+volumes:
+  data-volume:
